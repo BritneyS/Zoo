@@ -10,4 +10,6 @@ import Foundation
 
 enum Identity: String {
     case habitatCell
+    case penCell
+    case habitatToPenSegue
 }
