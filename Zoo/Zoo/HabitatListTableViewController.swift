@@ -37,7 +37,7 @@ class HabitatListTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-    /*
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -45,16 +45,16 @@ class HabitatListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.habitatList.count
     }
-    */
-    /*
+ 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identity.habitatCell.rawValue, for: indexPath)
 
         // Configure the cell...
-
+        cell.textLabel?.text = habitatList[indexPath.row].name
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
