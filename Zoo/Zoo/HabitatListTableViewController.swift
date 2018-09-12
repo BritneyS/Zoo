@@ -10,33 +10,42 @@ import UIKit
 
 class HabitatListTableViewController: UITableViewController {
 
+    // MARK: Properties
+    var habitatList: [Habitat] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateHabitatList()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: Methods
+    
+    func populateHabitatList() {
+        let habitats = HabitatList()
+        
+        for habitat in habitats.habitats {
+            let newHabitat = Habitat(name: habitat.key, pens: habitat.value)
+            habitatList.append(newHabitat)
+        }
+        print(self.habitatList)
+    }
 
     // MARK: - Table view data source
-
+    /*
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.habitatList.count
     }
-
+    */
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
