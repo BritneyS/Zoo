@@ -33,3 +33,12 @@ class BabyAnimal: Animal {
     }
 }
 
+struct AnimalList {
+    var animals: [String:[Animal]] = ["Lion Pen":[],
+                                      "Elephant Pen":[],
+                                      "Monkey Pen":[],
+                                      "Snake Pen":[],
+                                      "Polar Bear Pen":[],
+                                      "Penguin Pen":[]]
+}
+

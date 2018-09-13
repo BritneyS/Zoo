@@ -37,9 +37,6 @@ class HabitatListTableViewController: UITableViewController {
         print("Habitat List and Pens: \(self.habitatList)")
     }
     
-    func populatePenListByHabitat() {
-        
-    }
 
     // MARK: - Table view data source
     
