@@ -57,6 +57,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="eTM-uE-Deo" kind="show" identifier="penToAnimalSegue" id="CdO-Jd-zbX"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -69,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="1928" y="14"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Animal List Table View Controller-->
         <scene sceneID="fCx-5Y-J0U">
             <objects>
-                <tableViewController id="eTM-uE-Deo" sceneMemberID="viewController">
+                <tableViewController id="eTM-uE-Deo" customClass="AnimalListTableViewController" customModule="Zoo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a7W-jl-bMl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,7 +98,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEn-0M-oBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2865" y="14"/>
+            <point key="canvasLocation" x="2876" y="14"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3XC-A0-0TP">
