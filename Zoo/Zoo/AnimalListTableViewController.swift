@@ -13,7 +13,8 @@ class AnimalListTableViewController: UITableViewController {
     // MARK: Properties
     
     var penData: Pen?
-    var animalList: [String] = []
+    var animalList: [Animal] = []
+    var selectedAnimalIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class AnimalListTableViewController: UITableViewController {
     }
     
     // MARK: Methods
-    // componentArray = [String] (dict.keys)
+   
     func populateAnimals() {
         let animals = AnimalList()
         let penID = penData?.name // [Lion Pen, Monkey Pen, ...]
@@ -35,7 +36,7 @@ class AnimalListTableViewController: UITableViewController {
         for animal in animals.animals {
             if animal.key == penID {
                 for animalListing in animal.value {
-                    let newAnimal = animalListing.name
+                    let newAnimal = animalListing
                     animalList.append(newAnimal)
                 }
             }
@@ -59,7 +60,7 @@ class AnimalListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identity.animalCell.rawValue, for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = animalList[indexPath.row]
+        cell.textLabel?.text = animalList[indexPath.row].name
         return cell
     }
     
@@ -76,30 +77,22 @@ class AnimalListTableViewController: UITableViewController {
         }
     }
  
+    // MARK: Segue
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedAnimalIndex = indexPath.row
+        return indexPath
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case Identity.animalToDetailSegue.rawValue:
+            guard let animalDetailViewController = segue.destination as? AnimalDetailViewController else { return }
+            animalDetailViewController.animalData = animalList[selectedAnimalIndex]
+        default:
+            print("Error at Animal to Detail segue")
+        }
     }
-    */
+    
 
 }
