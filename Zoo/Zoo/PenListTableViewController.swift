@@ -14,6 +14,7 @@ class PenListTableViewController: UITableViewController {
     
     var habitatData: Habitat?
     var penList: [Pen] = []
+    var selectedPenIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,14 +68,25 @@ class PenListTableViewController: UITableViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    
+    // MARK: Segue
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedPenIndex = indexPath.row
+        return indexPath
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case Identity.penToAnimalSegue.rawValue:
+            print("Pen to Animal Segue")
+            guard let animalListTableViewController = segue.destination as? AnimalListTableViewController else { return }
+            animalListTableViewController.penData = penList[selectedPenIndex]
+            print("Pen data at segue: \(penList[selectedPenIndex].name), \(penList[selectedPenIndex].animals)")
+        default:
+            print("Error at Pen to Animal Segue")
+        }
+    }
+    
 
 }

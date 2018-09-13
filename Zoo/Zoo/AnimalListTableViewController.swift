@@ -30,7 +30,7 @@ class AnimalListTableViewController: UITableViewController {
     func populateAnimals() {
         let animals = AnimalList()
         let penIDs = [String](animals.animals.keys) // [Lion Pen, Monkey Pen, ...]
-        
+        print("PenIDs: \(penIDs)")
         for penName in penIDs {
             for animal in animals.animals {
                 if animal.key == penName {
@@ -47,7 +47,7 @@ class AnimalListTableViewController: UITableViewController {
     
 
     // MARK: - Table view data source
-    /*
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -55,16 +55,16 @@ class AnimalListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return animalList.count
     }
-    */
-    /*
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identity.animalCell.rawValue, for: indexPath)
 
         // Configure the cell...
-
+        cell.textLabel?.text = animalList[indexPath.row].name
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
