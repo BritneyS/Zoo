@@ -13,20 +13,29 @@ class PenListTableViewController: UITableViewController {
     // MARK: Properties
     
     var habitatData: Habitat?
+    var penList: [Pen] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        populatePens()
         guard let habitatData = self.habitatData else {
             print ("No data")
             return
         }
+        print("Habitat Data: \(self.habitatData)")
 
     }
 
     // MARK: Methods
     
     func populatePens() {
+        let pens = PenList()
         
+        for pen in pens.pens {
+            let newPen = Pen(name: pen.key, animals: pen.value)
+            penList.append(newPen)
+        }
+        print(self.penList)
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,24 +46,22 @@ class PenListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return penList.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identity.penCell.rawValue, for: indexPath)
 
         // Configure the cell...
-
+        cell.textLabel?.text = penList[indexPath.row].name
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

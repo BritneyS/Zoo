@@ -10,16 +10,16 @@ import Foundation
 
 class Habitat: NSObject {
     var name: String
-    var pens: [Pen]
+    var penID: [String]
     
-    init(name: String, pens: [Pen]) {
+    init(name: String, penID: [String]) {
         self.name = name
-        self.pens = pens
+        self.penID = penID
     }
 }
 
 struct HabitatList {
-    var habitats: [String:[Pen]] = ["Sahara":[],
-                                    "Forest":[],
-                                    "Artic":[]]
+    var habitats: [String:[String]] = ["Sahara":["Lion Pen", "Elephant Pen"],
+                                    "Forest":["Monkey Pen","Snake Pen"],
+                                    "Artic":["Polar Bear Pen","Penguin Pen"]]
 }

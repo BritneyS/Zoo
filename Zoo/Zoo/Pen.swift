@@ -11,10 +11,12 @@ import Foundation
 class Pen: NSObject {
     var name: String
     var animals: [Animal]
+    //var habitatName: String
     
     init(name: String, animals: [Animal]) {
         self.name = name
         self.animals = animals
+        //self.habitatName = habitatName
     }
 }
 

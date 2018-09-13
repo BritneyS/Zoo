@@ -31,10 +31,14 @@ class HabitatListTableViewController: UITableViewController {
         let habitats = HabitatList()
         
         for habitat in habitats.habitats {
-            let newHabitat = Habitat(name: habitat.key, pens: habitat.value)
+            let newHabitat = Habitat(name: habitat.key, penID: habitat.value)
             habitatList.append(newHabitat)
         }
-        print(self.habitatList)
+        print("Habitat List and Pens: \(self.habitatList)")
+    }
+    
+    func populatePenListByHabitat() {
+        
     }
 
     // MARK: - Table view data source
