@@ -35,7 +35,7 @@ class BabyAnimal: Animal {
 
 struct AnimalList {
     var animals: [String:[Animal]] = ["Lion Pen":[Animal(species: "lion", gender: "female", name: "Lily Lion")],
-                                      "Elephant Pen":[Animal(species: "elephant", gender: "male", name: "Edward Elephat")],
+                                      "Elephant Pen":[Animal(species: "elephant", gender: "male", name: "Edward Elephant")],
                                       "Monkey Pen":[Animal(species: "monkey", gender: "female", name: "Maya Monkey")],
                                       "Snake Pen":[Animal(species: "snake", gender: "female", name: "Sally Snake")],
                                       "Polar Bear Pen":[Animal(species: "polar bear", gender: "male", name: "Benjamin Bear")],

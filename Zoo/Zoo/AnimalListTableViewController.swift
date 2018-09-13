@@ -13,10 +13,11 @@ class AnimalListTableViewController: UITableViewController {
     // MARK: Properties
     
     var penData: Pen?
-    var animalList: [Animal] = []
+    var animalList: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        populateAnimals()
         guard let penData = self.penData else { return }
     }
 
@@ -29,18 +30,17 @@ class AnimalListTableViewController: UITableViewController {
     // componentArray = [String] (dict.keys)
     func populateAnimals() {
         let animals = AnimalList()
-        let penIDs = [String](animals.animals.keys) // [Lion Pen, Monkey Pen, ...]
-        print("PenIDs: \(penIDs)")
-        for penName in penIDs {
-            for animal in animals.animals {
-                if animal.key == penName {
-                    for animalListing in animal.value {
-                        let newAnimal = animalListing
-                        animalList.append(newAnimal)
-                    }
+        let penID = penData?.name // [Lion Pen, Monkey Pen, ...]
+        print("PenIDs: \(penID)")
+        for animal in animals.animals {
+            if animal.key == penID {
+                for animalListing in animal.value {
+                    let newAnimal = animalListing.name
+                    animalList.append(newAnimal)
                 }
             }
         }
+        
         print(self.animalList)
     }
     
@@ -61,7 +61,7 @@ class AnimalListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identity.animalCell.rawValue, for: indexPath)
 
         // Configure the cell...
-        cell.textLabel?.text = animalList[indexPath.row].name
+        cell.textLabel?.text = animalList[indexPath.row]
         return cell
     }
     

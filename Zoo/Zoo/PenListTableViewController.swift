@@ -35,7 +35,7 @@ class PenListTableViewController: UITableViewController {
         for penName in (self.habitatData?.penID)! {
             for pen in pens.pens {
                 if pen.key == penName {
-                    let newPen = Pen(name: pen.key, animals: pen.value)
+                    let newPen = Pen(name: pen.key, animalID: pen.value)
                     penList.append(newPen)
                 }
             }
@@ -82,7 +82,7 @@ class PenListTableViewController: UITableViewController {
             print("Pen to Animal Segue")
             guard let animalListTableViewController = segue.destination as? AnimalListTableViewController else { return }
             animalListTableViewController.penData = penList[selectedPenIndex]
-            print("Pen data at segue: \(penList[selectedPenIndex].name), \(penList[selectedPenIndex].animals)")
+            print("Pen data at segue: \(penList[selectedPenIndex].name), \(penList[selectedPenIndex].animalID)")
         default:
             print("Error at Pen to Animal Segue")
         }
