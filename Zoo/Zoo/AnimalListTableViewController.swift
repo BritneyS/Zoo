@@ -14,7 +14,7 @@ class AnimalListTableViewController: UITableViewController {
     
     var penData: Pen?
     var animalList: [Animal] = []
-    var babyAnimalList: [BabyAnimal] = []
+    //var babyAnimalList: [BabyAnimal] = []
     var selectedAnimalIndex = 0
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class AnimalListTableViewController: UITableViewController {
                 }
                 for babyAnimalListing in animal.value.babyAnimalArray {
                     let newBabyAnimal = babyAnimalListing
-                    babyAnimalList.append(newBabyAnimal)
+                    animalList.append(newBabyAnimal)
                 }
             }
         }
@@ -56,7 +56,7 @@ class AnimalListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return animalList.count
+            return animalList.count
     }
     
     
