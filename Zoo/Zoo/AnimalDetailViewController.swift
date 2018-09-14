@@ -44,6 +44,7 @@ class AnimalDetailViewController: UIViewController {
     // MARK: Properties
     
     var animalData: Animal?
+    var babyAnimalData: BabyAnimal?
     var isEditMode = false // where if in editing mode, bar button is 'Save', else 'Edit'
     
 

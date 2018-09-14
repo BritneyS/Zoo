@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Animal: NSObject {
+class Animal: NSObject, Codable {
     var species: String
     var gender: String
     var name: String 
@@ -34,11 +34,14 @@ class BabyAnimal: Animal {
 }
 
 struct AnimalList {
-    var animals: [String:[Animal]] = ["Lion Pen":[Animal(species: "lion", gender: "female", name: "Lily Lion")],
-                                      "Elephant Pen":[Animal(species: "elephant", gender: "male", name: "Edward Elephant")],
-                                      "Monkey Pen":[Animal(species: "monkey", gender: "female", name: "Maya Monkey")],
-                                      "Snake Pen":[Animal(species: "snake", gender: "female", name: "Sally Snake")],
-                                      "Polar Bear Pen":[Animal(species: "polar bear", gender: "male", name: "Benjamin Bear")],
-                                      "Penguin Pen":[BabyAnimal(age: "2", species: "penguin", gender: "female", name: "Penny Penguin")]]
+    var animals: [String:(animalArray: [Animal], babyAnimalArray: [BabyAnimal])] =
+        [
+            "Lion Pen":(animalArray: [Animal(species: "lion", gender: "female", name: "Lily Lion")], babyAnimalArray: []),
+            "Elephant Pen":(animalArray: [Animal(species: "elephant", gender: "male", name: "Edward Elephant")], babyAnimalArray: []),
+            "Monkey Pen":(animalArray: [Animal(species: "monkey", gender: "female", name: "Maya Monkey")], babyAnimalArray: []),
+            "Snake Pen":(animalArray: [Animal(species: "snake", gender: "female", name: "Sally Snake")], babyAnimalArray: []),
+            "Polar Bear Pen":(animalArray: [Animal(species: "polar bear", gender: "male", name: "Benjamin Bear")], babyAnimalArray: []),
+            "Penguin Pen":(animalArray: [], babyAnimalArray: [BabyAnimal(age: "2", species: "penguin", gender: "female", name: "Penny Penguin")])
+        ]
 }
 

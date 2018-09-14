@@ -14,6 +14,7 @@ class AnimalListTableViewController: UITableViewController {
     
     var penData: Pen?
     var animalList: [Animal] = []
+    var babyAnimalList: [BabyAnimal] = []
     var selectedAnimalIndex = 0
     
     override func viewDidLoad() {
@@ -34,9 +35,13 @@ class AnimalListTableViewController: UITableViewController {
         print("PenIDs: \(penData!.name)")
         for animal in animals.animals {
             if animal.key == penID {
-                for animalListing in animal.value {
+                for animalListing in animal.value.animalArray {
                     let newAnimal = animalListing
                     animalList.append(newAnimal)
+                }
+                for babyAnimalListing in animal.value.babyAnimalArray {
+                    let newBabyAnimal = babyAnimalListing
+                    babyAnimalList.append(newBabyAnimal)
                 }
             }
         }
@@ -89,7 +94,12 @@ class AnimalListTableViewController: UITableViewController {
             print("Animal to Detail Segue")
             guard let animalDetailViewController = segue.destination as? AnimalDetailViewController else { return }
             let selectedAnimal = animalList[selectedAnimalIndex]
-            animalDetailViewController.animalData = selectedAnimal
+            if selectedAnimal is BabyAnimal {
+                animalDetailViewController.babyAnimalData = selectedAnimal
+            } else {
+                animalDetailViewController.animalData = selectedAnimal
+            }
+            
         default:
             print("Error at Animal to Detail segue")
         }
