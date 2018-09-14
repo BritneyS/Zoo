@@ -19,7 +19,6 @@ class AnimalListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         populateAnimals()
-        guard let penData = self.penData else { return }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +31,7 @@ class AnimalListTableViewController: UITableViewController {
     func populateAnimals() {
         let animals = AnimalList()
         let penID = penData?.name // [Lion Pen, Monkey Pen, ...]
-        print("PenIDs: \(penID)")
+        print("PenIDs: \(penData!.name)")
         for animal in animals.animals {
             if animal.key == penID {
                 for animalListing in animal.value {
@@ -87,8 +86,10 @@ class AnimalListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Identity.animalToDetailSegue.rawValue:
+            print("Animal to Detail Segue")
             guard let animalDetailViewController = segue.destination as? AnimalDetailViewController else { return }
-            animalDetailViewController.animalData = animalList[selectedAnimalIndex]
+            let selectedAnimal = animalList[selectedAnimalIndex]
+            animalDetailViewController.animalData = selectedAnimal
         default:
             print("Error at Animal to Detail segue")
         }

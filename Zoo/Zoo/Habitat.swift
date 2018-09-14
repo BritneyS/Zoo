@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Habitat: NSObject {
+class Habitat {
     var name: String
     var penID: [String]
     

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Animal: NSObject, Codable {
+class Animal: NSObject {
     var species: String
     var gender: String
     var name: String 
@@ -21,9 +21,9 @@ class Animal: NSObject, Codable {
 }
 
 class BabyAnimal: Animal {
-    var age: Int
+    var age: String
     
-    init(age: Int, species: String, gender: String, name: String) {
+    init(age: String, species: String, gender: String, name: String) {
         self.age = age
         super.init(species: species, gender: gender, name: name)
     }
@@ -39,6 +39,6 @@ struct AnimalList {
                                       "Monkey Pen":[Animal(species: "monkey", gender: "female", name: "Maya Monkey")],
                                       "Snake Pen":[Animal(species: "snake", gender: "female", name: "Sally Snake")],
                                       "Polar Bear Pen":[Animal(species: "polar bear", gender: "male", name: "Benjamin Bear")],
-                                      "Penguin Pen":[Animal(species: "penguin", gender: "female", name: "Penny Penguin")]]
+                                      "Penguin Pen":[BabyAnimal(age: "2", species: "penguin", gender: "female", name: "Penny Penguin")]]
 }
 

@@ -8,7 +8,35 @@
 
 import UIKit
 
+class DetailTextField: UITextField {
+    
+    
+    
+}
+
 class AnimalDetailViewController: UIViewController {
+    
+    // MARK: Outlets
+    
+    @IBOutlet weak var animalNameLabel: UILabel!
+    
+    @IBOutlet weak var animalSpeciesLabel: UILabel!
+    
+    @IBOutlet weak var animalGenderLabel: UILabel!
+    
+    @IBOutlet weak var animalAgeLabel: UILabel!
+    
+    @IBOutlet weak var animalNameTextField: DetailTextField!
+    
+    @IBOutlet weak var animalSpeciesTextField: DetailTextField!
+    
+    @IBOutlet weak var animalGenderTextField: DetailTextField!
+    
+    @IBOutlet weak var animalAgeTextField: DetailTextField!
+    
+    
+    
+    
     
     // MARK: Properties
     
@@ -16,8 +44,9 @@ class AnimalDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let animalData = self.animalData else { return }
-
+        setAnimalLabels()
+        //guard let animalData = self.animalData as? BabyAnimal else { return }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -28,11 +57,40 @@ class AnimalDetailViewController: UIViewController {
     
     // MARK: Methods
     
-    func setLabels() {
-        
+    func setAnimalLabels() {
+        animalNameLabel.text = animalData?.name
+        animalSpeciesLabel.text = animalData?.species
+        animalGenderLabel.text = animalData?.gender
+        if animalData is BabyAnimal? {
+            setBabyAnimalLabels()
+        } else {
+            toggleBabyAnimalLabels()
+        }
     }
     
+    func setBabyAnimalLabels() {
+        guard let babyAnimal = (animalData as? BabyAnimal) else { return }
+        animalAgeLabel.text = babyAnimal.age
+    }
     
-
-
+    func toggleBabyAnimalLabels() {
+        animalAgeLabel.isHidden = !animalAgeLabel.isHidden
+    }
+    
+    func toggleAnimalLabels() {
+        animalAgeLabel.isHidden = !animalAgeLabel.isHidden
+        animalSpeciesLabel.isHidden = !animalSpeciesLabel.isHidden
+        animalGenderLabel.isHidden = !animalGenderLabel.isHidden
+    }
+    
+    func toggleBabyAnimalTextFields() {
+        animalAgeTextField.isHidden = !animalAgeTextField.isHidden
+    }
+    
+    func toggleAnimalTextFields() {
+        animalNameTextField.isHidden = !animalNameTextField.isHidden
+        animalSpeciesTextField.isHidden = !animalSpeciesTextField.isHidden
+        animalGenderTextField.isHidden = !animalGenderTextField.isHidden
+    }
+    
 }

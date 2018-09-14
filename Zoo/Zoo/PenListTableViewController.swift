@@ -23,7 +23,7 @@ class PenListTableViewController: UITableViewController {
             print ("No data")
             return
         }
-        print("Habitat Data: \(self.habitatData)")
+        print("Habitat Data: \(habitatData)")
 
     }
 
