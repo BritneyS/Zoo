@@ -95,7 +95,8 @@ class AnimalListTableViewController: UITableViewController {
             guard let animalDetailViewController = segue.destination as? AnimalDetailViewController else { return }
             let selectedAnimal = animalList[selectedAnimalIndex]
             if selectedAnimal is BabyAnimal {
-                animalDetailViewController.babyAnimalData = selectedAnimal
+                guard let babySelectedAnimal = selectedAnimal as? BabyAnimal else { return }
+                animalDetailViewController.babyAnimalData = babySelectedAnimal
             } else {
                 animalDetailViewController.animalData = selectedAnimal
             }

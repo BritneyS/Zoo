@@ -51,19 +51,18 @@ class AnimalDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideAllTextFields()
-        setAnimalLabels()
+        if babyAnimalData != nil {
+            setBabyAnimalLabels()
+        }
+        else {
+            setAnimalLabels()
+        }
+        
         toggleEditOrSaveMode() // test
-        
-        
-        
-        //guard let animalData = self.animalData as? BabyAnimal else { return }
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -73,11 +72,18 @@ class AnimalDetailViewController: UIViewController {
         animalNameLabel.text = animalData?.name
         animalSpeciesLabel.text = animalData?.species
         animalGenderLabel.text = animalData?.gender
-        if animalData is BabyAnimal? {
-            setBabyAnimalLabels()
-        } else {
-            toggleBabyAnimalLabels()
-        }
+        toggleBabyAnimalLabels()
+    }
+    
+    func setBabyAnimalLabels() {
+        animalNameLabel.text = babyAnimalData?.name
+        animalSpeciesLabel.text = babyAnimalData?.species
+        animalGenderLabel.text = babyAnimalData?.gender
+        animalAgeLabel.text = babyAnimalData?.age
+    }
+    
+    func toggleBabyAnimalLabels() {
+        animalAgeLabel.isHidden = !animalAgeLabel.isHidden
     }
     
     func setAllAnimalTextFields() {
@@ -95,15 +101,6 @@ class AnimalDetailViewController: UIViewController {
         animalSpeciesTextField.isHidden = true
         animalGenderTextField.isHidden = true
         animalAgeTextField.isHidden = true
-    }
-    
-    func setBabyAnimalLabels() {
-        guard let babyAnimal = (animalData as? BabyAnimal) else { return }
-        animalAgeLabel.text = babyAnimal.age
-    }
-    
-    func toggleBabyAnimalLabels() {
-        animalAgeLabel.isHidden = !animalAgeLabel.isHidden
     }
     
     func toggleAnimalLabels() {
