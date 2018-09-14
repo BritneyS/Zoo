@@ -79,6 +79,16 @@ class AnimalDetailViewController: UIViewController {
         }
     }
     
+    func setAllAnimalTextFields() {
+        animalNameTextField.text = animalData?.name
+        animalSpeciesTextField.text = animalData?.species
+        animalGenderTextField.text = animalData?.gender
+        if animalData is BabyAnimal? {
+            guard let babyAnimal = (animalData as? BabyAnimal) else { return }
+            animalAgeTextField.text = babyAnimal.age
+        }
+    }
+    
     func hideAllTextFields() {
         animalNameTextField.isHidden = true
         animalSpeciesTextField.isHidden = true
@@ -99,7 +109,6 @@ class AnimalDetailViewController: UIViewController {
         animalNameLabel.isHidden = !animalNameLabel.isHidden
         animalSpeciesLabel.isHidden = !animalSpeciesLabel.isHidden
         animalGenderLabel.isHidden = !animalGenderLabel.isHidden
-        
     }
     
     func toggleBabyAnimalTextFields() {
@@ -114,30 +123,27 @@ class AnimalDetailViewController: UIViewController {
     
     func toggleEditMode(isEditMode: Bool) {
         self.isEditMode = isEditMode
-        // toggles fields and text fields
-        //if self.isEditMode {
-            toggleAnimalTextFields()
-            toggleAnimalLabels()
-            toggleBabyAnimalLabels()
-            print("Animal name label hidden: \(animalNameLabel.isHidden)")
-            if self.animalData is BabyAnimal {
-                toggleBabyAnimalTextFields()
-            }
-   //     }
+        toggleAnimalTextFields()
+        toggleAnimalLabels()
+        toggleBabyAnimalLabels()
+        if self.animalData is BabyAnimal {
+            toggleBabyAnimalTextFields()
+        }
     }
     
     @objc
     func editMode() {
         toggleEditMode(isEditMode: true)
         toggleEditOrSaveMode()
+        setAllAnimalTextFields()
     }
     
     @objc
     func saveMode() {
         toggleEditMode(isEditMode: false)
         toggleEditOrSaveMode()
-        
     }
+    
     func toggleEditOrSaveMode() {
         if !isEditMode {
             let editBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMode))
