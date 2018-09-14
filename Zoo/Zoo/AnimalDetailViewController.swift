@@ -36,7 +36,7 @@ class AnimalDetailViewController: UIViewController {
     
     @IBOutlet weak var animalAgeTextField: DetailTextField!
     
-    @IBOutlet weak var editOrSaveBarButtonItem: UIBarButtonItem!
+  //  @IBOutlet weak var editOrSaveBarButtonItem: UIBarButtonItem!
     
     
     
@@ -50,6 +50,10 @@ class AnimalDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setAnimalLabels()
+        toggleEditOrSaveMode() // test
+        
+        
+        
         //guard let animalData = self.animalData as? BabyAnimal else { return }
         
         // Do any additional setup after loading the view.
@@ -59,6 +63,7 @@ class AnimalDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // MARK: Methods
     
@@ -113,10 +118,12 @@ class AnimalDetailViewController: UIViewController {
         
     }
     func toggleEditOrSaveMode() {
-        if isEditMode {
-            editOrSaveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(AnimalDetailViewController.editMode))
-        } else if !isEditMode {
-            editOrSaveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(AnimalDetailViewController.saveMode))
+        if !isEditMode {
+            let editBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: nil)
+            self.navigationItem.rightBarButtonItem = editBarButtonItem
+        } else if isEditMode {
+            let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: nil)
+            self.navigationItem.rightBarButtonItem = saveBarButtonItem
         }
     }
     

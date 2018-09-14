@@ -172,9 +172,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qqv-Gb-eXd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="BZP-Qa-bdB">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="nA2-4H-Ngj"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="BZP-Qa-bdB"/>
                     <connections>
                         <outlet property="animalAgeLabel" destination="QnP-AR-9JB" id="u9m-4t-CIO"/>
                         <outlet property="animalAgeTextField" destination="1jr-4J-y4V" id="ox1-RQ-cWf"/>
@@ -184,7 +182,6 @@
                         <outlet property="animalNameTextField" destination="Dai-8b-e7M" id="Byw-hR-S5n"/>
                         <outlet property="animalSpeciesLabel" destination="vRs-sq-C01" id="wbx-bh-Bq0"/>
                         <outlet property="animalSpeciesTextField" destination="nbm-A8-Wn5" id="2wG-o1-KUP"/>
-                        <outlet property="editOrSaveBarButtonItem" destination="nA2-4H-Ngj" id="0f6-T1-ZNY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8lk-Fk-HcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
