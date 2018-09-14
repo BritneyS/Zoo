@@ -115,7 +115,7 @@ class AnimalDetailViewController: UIViewController {
     func toggleEditMode(isEditMode: Bool) {
         self.isEditMode = isEditMode
         // toggles fields and text fields
-        if self.isEditMode {
+        //if self.isEditMode {
             toggleAnimalTextFields()
             toggleAnimalLabels()
             toggleBabyAnimalLabels()
@@ -123,16 +123,19 @@ class AnimalDetailViewController: UIViewController {
             if self.animalData is BabyAnimal {
                 toggleBabyAnimalTextFields()
             }
-        }
+   //     }
     }
     
     @objc
     func editMode() {
         toggleEditMode(isEditMode: true)
+        toggleEditOrSaveMode()
     }
     
     @objc
     func saveMode() {
+        toggleEditMode(isEditMode: false)
+        toggleEditOrSaveMode()
         
     }
     func toggleEditOrSaveMode() {
