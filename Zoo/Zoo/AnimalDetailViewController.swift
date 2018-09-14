@@ -14,6 +14,8 @@ class DetailTextField: UITextField {
     
 }
 
+
+
 class AnimalDetailViewController: UIViewController {
     
     // MARK: Outlets
@@ -34,6 +36,7 @@ class AnimalDetailViewController: UIViewController {
     
     @IBOutlet weak var animalAgeTextField: DetailTextField!
     
+    @IBOutlet weak var editOrSaveBarButtonItem: UIBarButtonItem!
     
     
     
@@ -41,6 +44,8 @@ class AnimalDetailViewController: UIViewController {
     // MARK: Properties
     
     var animalData: Animal?
+    var isEditMode = false // where if in editing mode, bar button is 'Save', else 'Edit'
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +96,28 @@ class AnimalDetailViewController: UIViewController {
         animalNameTextField.isHidden = !animalNameTextField.isHidden
         animalSpeciesTextField.isHidden = !animalSpeciesTextField.isHidden
         animalGenderTextField.isHidden = !animalGenderTextField.isHidden
+    }
+    
+    func toggleEditMode(isEditMode: Bool) {
+        self.isEditMode = isEditMode
+        // toggles fields and text fields
+    }
+    
+    @objc
+    func editMode() {
+        
+    }
+    
+    @objc
+    func saveMode() {
+        
+    }
+    func toggleEditOrSaveMode() {
+        if isEditMode {
+            editOrSaveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(AnimalDetailViewController.editMode))
+        } else if !isEditMode {
+            editOrSaveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(AnimalDetailViewController.saveMode))
+        }
     }
     
 }
