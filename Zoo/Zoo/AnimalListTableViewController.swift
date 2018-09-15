@@ -107,6 +107,24 @@ class AnimalListTableViewController: UITableViewController {
             print("Error at Animal to Detail segue")
         }
     }
-    
+}
 
+// MARK: AddAnimalViewControllerDelegate Protocol Implementation
+
+extension AnimalListTableViewController: AddAnimalViewControllerDelegate {
+    
+    func addAnimalViewControllerDidCancel(_ controller: AddAnimalViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addAnimalViewControllerAdd(_ controller: AddAnimalViewController, didFinishAdding item: Animal) {
+        
+        let newRowIndex = animalList.count
+        animalList.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+//        saveContact() // data persistence function here
+        navigationController?.popViewController(animated: true)
+    }
 }
