@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AnimalDetailViewControllerDelegate: class {
-    func animalDetailViewControllerDidCancel(_ controller: AnimalDetailViewController)
+    
     func animalDetailViewControllerEdit(_ controller: AnimalDetailViewController, didFinishEditing item: Animal)
 }
 
@@ -47,9 +47,9 @@ class AnimalDetailViewController: UIViewController {
     // MARK: Properties
     
     var animalData: Animal?
-   var babyAnimalData: BabyAnimal?
+    var babyAnimalData: BabyAnimal?
     var isEditMode = false // where if in editing mode, bar button is 'Save', else 'Edit'
-    
+    var delegate: AnimalDetailViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +126,7 @@ class AnimalDetailViewController: UIViewController {
         self.isEditMode = isEditMode
         toggleAnimalTextFields()
         toggleAnimalLabels()
-        toggleBabyAnimalLabels()
+        //toggleBabyAnimalLabels()
         if self.animalData is BabyAnimal {
             toggleBabyAnimalTextFields()
         }
@@ -140,9 +140,12 @@ class AnimalDetailViewController: UIViewController {
     }
     
     @objc
-    func saveMode() {
+    func saveEdit() {
         toggleEditMode(isEditMode: false)
         toggleEditOrSaveMode()
+        saveAnimalFunction()
+        setAnimalLabels()
+        self.navigationItem.leftBarButtonItem = nil
     }
     
     @objc
@@ -157,12 +160,27 @@ class AnimalDetailViewController: UIViewController {
             let editBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMode))
             self.navigationItem.rightBarButtonItem = editBarButtonItem
         } else if isEditMode {
-            let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveMode))
+            let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveEdit))
             self.navigationItem.rightBarButtonItem = saveBarButtonItem
             
             let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdit))
             self.navigationItem.leftBarButtonItem = cancelBarButtonItem
         }
+    }
+    
+    func saveAnimalFunction() {
+        guard let animal = animalData else { return }
+        
+        guard let updatedName = animalNameTextField.text else { return }
+        animal.name = updatedName
+        
+        guard let updatedSpecies = animalSpeciesTextField.text else { return }
+        animal.species = updatedSpecies
+        
+        guard let updatedGender = animalGenderTextField.text else { return }
+        animal.gender = updatedGender
+        
+        delegate?.animalDetailViewControllerEdit(self, didFinishEditing: animal)
     }
     
 }

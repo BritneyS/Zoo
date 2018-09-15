@@ -101,7 +101,9 @@ class AnimalListTableViewController: UITableViewController {
                 animalDetailViewController.animalData = selectedAnimal
             }
             
-        
+        case Identity.animalToAddAnimalSegue.rawValue:
+            guard let addAnimalViewController = segue.destination as? AddAnimalViewController else { return }
+            addAnimalViewController.delegate = self
             
         default:
             print("Error at Animal to Detail segue")
@@ -129,13 +131,9 @@ extension AnimalListTableViewController: AddAnimalViewControllerDelegate {
     }
 }
 
-// MARK: ContactListViewControllerDelegate Protocol Implementation
+// MARK: AnimalListViewControllerDelegate Protocol Implementation
 
 extension AnimalListTableViewController: AnimalDetailViewControllerDelegate {
-   
-    func animalDetailViewControllerDidCancel(_ controller: AnimalDetailViewController) {
-        navigationController?.popViewController(animated: true)
-    }
     
     func animalDetailViewControllerEdit(_ controller: AnimalDetailViewController, didFinishEditing item: Animal) {
         
