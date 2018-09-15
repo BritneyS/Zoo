@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0651260F214D2BE1007B9F1B /* AddAnimalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0651260E214D2BE1007B9F1B /* AddAnimalViewController.swift */; };
 		06F46FB52149898F008F8653 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F46FB42149898F008F8653 /* AppDelegate.swift */; };
 		06F46FBA2149898F008F8653 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06F46FB82149898F008F8653 /* Main.storyboard */; };
 		06F46FBC21498991008F8653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F46FBB21498991008F8653 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0651260E214D2BE1007B9F1B /* AddAnimalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnimalViewController.swift; sourceTree = "<group>"; };
 		06F46FB12149898F008F8653 /* Zoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F46FB42149898F008F8653 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06F46FB92149898F008F8653 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				06F46FD02149B375008F8653 /* PenListTableViewController.swift */,
 				06F46FD2214A9AD8008F8653 /* AnimalListTableViewController.swift */,
 				06F46FD4214AD2EC008F8653 /* AnimalDetailViewController.swift */,
+				0651260E214D2BE1007B9F1B /* AddAnimalViewController.swift */,
 				06F46FB82149898F008F8653 /* Main.storyboard */,
 				06F46FBB21498991008F8653 /* Assets.xcassets */,
 				06F46FBD21498991008F8653 /* LaunchScreen.storyboard */,
@@ -160,6 +163,7 @@
 				06F46FD12149B375008F8653 /* PenListTableViewController.swift in Sources */,
 				06F46FC721498B20008F8653 /* HabitatListTableViewController.swift in Sources */,
 				06F46FD3214A9AD8008F8653 /* AnimalListTableViewController.swift in Sources */,
+				0651260F214D2BE1007B9F1B /* AddAnimalViewController.swift in Sources */,
 				06F46FC921498D7F008F8653 /* Habitat.swift in Sources */,
 				06F46FCB21499193008F8653 /* Pen.swift in Sources */,
 				06F46FCF2149B145008F8653 /* IdentityEnums.swift in Sources */,

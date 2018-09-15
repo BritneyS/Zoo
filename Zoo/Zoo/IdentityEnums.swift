@@ -15,4 +15,5 @@ enum Identity: String {
     case habitatToPenSegue
     case penToAnimalSegue
     case animalToDetailSegue
+    case animalToAddAnimalSegue
 }
