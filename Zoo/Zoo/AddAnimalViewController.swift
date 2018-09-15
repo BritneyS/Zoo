@@ -12,6 +12,8 @@ class AddAnimalViewController: UIViewController {
     
     // MARK: Outlets
     
+    @IBOutlet weak var currentPenLabel: UILabel!
+    
     @IBOutlet weak var addAnimalNameTextField: UITextField!
     
     @IBOutlet weak var addAnimalSpeciesTextField: UITextField!
