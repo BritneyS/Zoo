@@ -128,3 +128,24 @@ extension AnimalListTableViewController: AddAnimalViewControllerDelegate {
         navigationController?.popViewController(animated: true)
     }
 }
+
+// MARK: ContactListViewControllerDelegate Protocol Implementation
+
+extension AnimalListTableViewController: AnimalDetailViewControllerDelegate {
+   
+    func animalDetailViewControllerDidCancel(_ controller: AnimalDetailViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func animalDetailViewControllerEdit(_ controller: AnimalDetailViewController, didFinishEditing item: Animal) {
+        
+        guard let index = animalList.index(of: item) else { return }
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        guard let cell = tableView.cellForRow(at: indexPath) else { return }
+        cell.textLabel?.text = item.name
+//        saveContact() // data persistence function here
+        navigationController?.popViewController(animated: true)
+    }
+    
+}
