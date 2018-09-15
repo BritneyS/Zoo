@@ -10,7 +10,7 @@ import UIKit
 
 protocol AnimalDetailViewControllerDelegate: class {
     func animalDetailViewControllerDidCancel(_ controller: AnimalDetailViewController)
-    func addAnimalViewControllerEdit(_ controller: AnimalDetailViewController, didFinishEditing item: Animal)
+    func animalDetailViewControllerEdit(_ controller: AnimalDetailViewController, didFinishEditing item: Animal)
 }
 
 class DetailTextField: UITextField {
