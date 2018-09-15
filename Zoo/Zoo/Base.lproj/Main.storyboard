@@ -111,7 +111,7 @@
             </objects>
             <point key="canvasLocation" x="2876" y="14"/>
         </scene>
-        <!--Title-->
+        <!--Animal Details-->
         <scene sceneID="F9e-g5-Pa9">
             <objects>
                 <viewController id="Onw-0v-Yvj" customClass="AnimalDetailViewController" customModule="Zoo" customModuleProvider="target" sceneMemberID="viewController">
@@ -179,7 +179,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qqv-Gb-eXd"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="BZP-Qa-bdB"/>
+                    <navigationItem key="navigationItem" title="Animal Details" id="BZP-Qa-bdB"/>
                     <connections>
                         <outlet property="animalAgeLabel" destination="QnP-AR-9JB" id="u9m-4t-CIO"/>
                         <outlet property="animalAgeTextField" destination="1jr-4J-y4V" id="ox1-RQ-cWf"/>

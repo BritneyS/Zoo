@@ -145,6 +145,13 @@ class AnimalDetailViewController: UIViewController {
         toggleEditOrSaveMode()
     }
     
+    @objc
+    func cancelEdit() {
+        toggleEditMode(isEditMode: false)
+        self.navigationItem.leftBarButtonItem = nil
+        toggleEditOrSaveMode()
+    }
+    
     func toggleEditOrSaveMode() {
         if !isEditMode {
             let editBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMode))
@@ -152,6 +159,9 @@ class AnimalDetailViewController: UIViewController {
         } else if isEditMode {
             let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveMode))
             self.navigationItem.rightBarButtonItem = saveBarButtonItem
+            
+            let cancelBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelEdit))
+            self.navigationItem.leftBarButtonItem = cancelBarButtonItem
         }
     }
     
