@@ -101,6 +101,8 @@ class AnimalListTableViewController: UITableViewController {
                 animalDetailViewController.animalData = selectedAnimal
             }
             
+        
+            
         default:
             print("Error at Animal to Detail segue")
         }

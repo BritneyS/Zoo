@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol AddAnimalViewControllerDelegate: class {
+    func addAnimalViewControllerDidCancel(_ controller: AddAnimalViewController)
+    func addAnimalViewControllerAdd(_ controller: AddAnimalViewController, didFinishAdding item: Animal)
+}
+
 class AddAnimalViewController: UIViewController {
     
     // MARK: Outlets
