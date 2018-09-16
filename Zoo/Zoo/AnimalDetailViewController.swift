@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AnimalDetailViewControllerDelegate: class {
-    
+    func animalDetailViewControllerGoBack(_ controller: AnimalDetailViewController)
     func animalDetailViewControllerEdit(_ controller: AnimalDetailViewController, didFinishEditing item: Animal)
 }
 
@@ -155,10 +155,12 @@ class AnimalDetailViewController: UIViewController {
         toggleEditOrSaveMode()
     }
     
+    
     func toggleEditOrSaveMode() {
         if !isEditMode {
             let editBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMode))
             self.navigationItem.rightBarButtonItem = editBarButtonItem
+            
         } else if isEditMode {
             let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveEdit))
             self.navigationItem.rightBarButtonItem = saveBarButtonItem

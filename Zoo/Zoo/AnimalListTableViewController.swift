@@ -100,7 +100,7 @@ class AnimalListTableViewController: UITableViewController {
             } else {
                 animalDetailViewController.animalData = selectedAnimal
             }
-            
+            animalDetailViewController.delegate = self
         case Identity.animalToAddAnimalSegue.rawValue:
             guard let addAnimalViewController = segue.destination as? AddAnimalViewController else { return }
             addAnimalViewController.delegate = self
@@ -134,6 +134,10 @@ extension AnimalListTableViewController: AddAnimalViewControllerDelegate {
 // MARK: AnimalListViewControllerDelegate Protocol Implementation
 
 extension AnimalListTableViewController: AnimalDetailViewControllerDelegate {
+    
+    func animalDetailViewControllerGoBack(_ controller: AnimalDetailViewController) {
+        navigationController?.popViewController(animated: true)
+    }
     
     func animalDetailViewControllerEdit(_ controller: AnimalDetailViewController, didFinishEditing item: Animal) {
         
