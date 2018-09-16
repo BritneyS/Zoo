@@ -79,14 +79,33 @@ class PenListTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case Identity.penToAnimalSegue.rawValue:
+            populatePens()
             print("Pen to Animal Segue")
             guard let animalListTableViewController = segue.destination as? AnimalListTableViewController else { return }
             animalListTableViewController.penData = penList[selectedPenIndex]
             print("Pen data at segue: \(penList[selectedPenIndex].name), \(penList[selectedPenIndex].animalID)")
+            animalListTableViewController.delegate = self
         default:
             print("Error at Pen to Animal Segue")
         }
     }
-    
+}
 
+// MARK: AnimalListTableViewController Protocol Implementation
+
+extension PenListTableViewController: AnimalListTableViewControllerDelegate {
+    func animalListTableViewControllerUpdate(_ controller: AnimalListTableViewController, didUpdate item: Pen) {
+        penList[selectedPenIndex].animalID = item.animalID
+        /*
+        if item.animalID.count > penList[selectedPenIndex].animalID.count {
+            let newRowIndex = item.animalID.count
+            let indexPath = IndexPath(row: newRowIndex, section: 0)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        }
+        */
+//        populatePens()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
 }

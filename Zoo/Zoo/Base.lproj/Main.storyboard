@@ -100,6 +100,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Animal List" id="OY0-3B-LEz">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="0Vm-u9-JNW">
+                            <connections>
+                                <action selector="updatePenAnimalIds" destination="eTM-uE-Deo" id="tBg-VG-2Us"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ksw-jS-Yl8">
                             <connections>
                                 <segue destination="lpr-xE-TIM" kind="show" identifier="animalToAddAnimalSegue" id="ca1-ZX-nx3"/>
@@ -284,7 +289,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bsN-Fo-9up"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Animal" id="XNU-hf-bhc"/>
+                    <navigationItem key="navigationItem" title="Add Animal" id="XNU-hf-bhc">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="WnB-xP-5ii">
+                            <connections>
+                                <action selector="cancel" destination="lpr-xE-TIM" id="9em-hU-dwo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="qsn-Te-Lj6">
+                            <connections>
+                                <action selector="save" destination="lpr-xE-TIM" id="1Ji-ju-xAS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addAnimalAgeTextField" destination="fVK-Iv-i32" id="DYg-6k-mjt"/>
                         <outlet property="addAnimalGenderTextField" destination="OyB-JN-J2f" id="kav-99-sT4"/>

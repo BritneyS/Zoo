@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AnimalListTableViewControllerDelegate: class {
+    func animalListTableViewControllerUpdate(_ controller: AnimalListTableViewController, didUpdate item: Pen)
+}
+
 class AnimalListTableViewController: UITableViewController {
 
     // MARK: Properties
@@ -16,10 +20,13 @@ class AnimalListTableViewController: UITableViewController {
     var animalList: [Animal] = []
     //var babyAnimalList: [BabyAnimal] = []
     var selectedAnimalIndex = 0
+    var delegate: AnimalListTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         populateAnimals()
+//        let updatedBackBarButtonItem = UIBarButtonItem(title: "Back2", style: .plain, target: self, action: #selector(updatePenAnimalIds))
+//        self.navigationItem.backBarButtonItem = updatedBackBarButtonItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,7 +39,7 @@ class AnimalListTableViewController: UITableViewController {
     func populateAnimals() {
         let animals = AnimalList()
         let penID = penData?.name // [Lion Pen, Monkey Pen, ...]
-        print("PenIDs: \(penData!.name)")
+        print("PenIDs: \(penData!.name) with animals \(penData!.animalID)")
         for animal in animals.animals {
             if animal.key == penID {
                 for animalListing in animal.value.animalArray {
@@ -45,8 +52,9 @@ class AnimalListTableViewController: UITableViewController {
                 }
             }
         }
-        
-        print(self.animalList)
+        for animal in animalList {
+            print("New animal list: \(animal.name)")
+        }
     }
 
     // MARK: - Table view data source
@@ -62,7 +70,7 @@ class AnimalListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Identity.animalCell.rawValue, for: indexPath)
-
+ //       populateAnimals()
         // Configure the cell...
         cell.textLabel?.text = animalList[indexPath.row].name
         return cell
@@ -109,6 +117,16 @@ class AnimalListTableViewController: UITableViewController {
             print("Error at Animal to Detail segue")
         }
     }
+    
+    // MARK: BarButton actions
+    //@objc
+    @IBAction func updatePenAnimalIds() {
+        guard let penData = penData else { return }
+        print("Update pen animal Ids: \(penData.animalID)")
+        populateAnimals()
+        delegate?.animalListTableViewControllerUpdate(self, didUpdate: penData)
+    }
+    
 }
 
 // MARK: AddAnimalViewControllerDelegate Protocol Implementation
@@ -123,6 +141,8 @@ extension AnimalListTableViewController: AddAnimalViewControllerDelegate {
         
         let newRowIndex = animalList.count
         animalList.append(item)
+        penData?.animalID.append(item.name) // adds reference to new animal record in Pen
+        
         
         let indexPath = IndexPath(row: newRowIndex, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)

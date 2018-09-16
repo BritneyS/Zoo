@@ -33,7 +33,7 @@ class BabyAnimal: Animal {
     }
 }
 
-struct AnimalList {
+class AnimalList {
     var animals: [String:(animalArray: [Animal], babyAnimalArray: [BabyAnimal])] =
         [
             "Lion Pen":(animalArray: [Animal(species: "lion", gender: "female", name: "Lily Lion")], babyAnimalArray: []),

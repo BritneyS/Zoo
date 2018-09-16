@@ -160,7 +160,6 @@ class AnimalDetailViewController: UIViewController {
         if !isEditMode {
             let editBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editMode))
             self.navigationItem.rightBarButtonItem = editBarButtonItem
-            
         } else if isEditMode {
             let saveBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveEdit))
             self.navigationItem.rightBarButtonItem = saveBarButtonItem

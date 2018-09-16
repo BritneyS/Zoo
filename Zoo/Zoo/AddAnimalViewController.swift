@@ -44,6 +44,20 @@ class AddAnimalViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    // MARK: IBActions
+    
+    @IBAction func save() {
+        guard let newSpecies = addAnimalSpeciesTextField.text,
+            let newGender = addAnimalGenderTextField.text,
+            let newName = addAnimalNameTextField.text else { return }
+        let newAnimal = Animal(species: newSpecies, gender: newGender, name: newName)
+        
+        delegate?.addAnimalViewControllerAdd(self, didFinishAdding: newAnimal)
+    }
+    
+    @IBAction func cancel() {
+        delegate?.addAnimalViewControllerDidCancel(self)
+    }
+    
 
 }
